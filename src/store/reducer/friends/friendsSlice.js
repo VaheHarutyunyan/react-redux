@@ -1,6 +1,6 @@
 export function friendsReduser(state = [], action) {
   if (action.type === "friend") {
-    console.log(state);
+    // console.log(state);
   }
   return state;
 }
