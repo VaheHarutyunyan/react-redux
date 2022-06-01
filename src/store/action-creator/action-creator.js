@@ -3,6 +3,7 @@ import {
   DELETE_TODO,
   COMPLETED_TODO,
   CHECKED_TODO,
+  FILTER_TODO
 } from "../action/action";
 
 export const actionDeleteTodo = (payload) => ({
@@ -22,5 +23,9 @@ export const actionCheckedTodo = (payload) => ({
 
 export const actionCompletedTodo = (payload) => ({
   type: COMPLETED_TODO,
+  payload,
+});
+export const actionFiltredTodo = (payload) => ({
+  type: FILTER_TODO,
   payload,
 });

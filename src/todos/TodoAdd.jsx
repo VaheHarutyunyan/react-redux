@@ -12,6 +12,7 @@ const TodoAdd = () => {
   const dispatch = useDispatch();
   const onAddTodo = () => {
     dispatch(actionAddTodo({ title: addValue }));
+    setAddValue("");
   };
   return (
     <>

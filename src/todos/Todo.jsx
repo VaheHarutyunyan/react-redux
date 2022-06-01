@@ -15,7 +15,6 @@ const Todo = () => {
             </div>
             <div className="col">
               <TodoAdd />
-              
             </div>
           </div>
         </div>
@@ -25,7 +24,6 @@ const Todo = () => {
         <div className="todo-footer">
           <div className="row">
             <TodoFooter />
-           
           </div>
         </div>
       </div>

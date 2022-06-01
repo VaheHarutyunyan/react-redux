@@ -1,10 +1,3 @@
-export function friendsReduser(state = [], action) {
-  if (action.type === "friend") {
-    // console.log(state);
-  }
-  return state;
-}
-
 export const initialFriends = [
   {
     id: 1,
@@ -15,3 +8,13 @@ export const initialFriends = [
     name: "Angela Merkel",
   },
 ];
+
+export function friendsReduser(state = initialFriends, action) {
+  if (action.type === "friend") {
+    return;
+  }
+  return state;
+}
+export function getFriends(state) {
+  return state.friends;
+}

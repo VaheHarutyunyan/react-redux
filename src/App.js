@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { getUserName } from "./store/reducer/users/usersSlice";
+import { getFriends } from "./store/reducer/friends/friendsSlice";
+import { getUsers } from "./store/reducer/users/usersSlice";
 import Todo from "./todos/Todo";
 
 function App() {
-  const userName = useSelector(getUserName);
+  const { name } = useSelector(getUsers);
+  const friends = useSelector(getFriends);
+  console.log(friends);
 
   const dispatch = useDispatch();
   return (
@@ -13,15 +16,15 @@ function App() {
         <Todo />
       </div>
       <div>
-        <p> {userName}</p>
+        <p> {name}</p>
         <input
           type="text"
-          value={userName}
+          value={name}
           onChange={(e) => {
             dispatch({
               type: "user",
               payload: {
-                userName: e.target.value,
+                name: e.target.value,
               },
             });
           }}

@@ -1,27 +1,15 @@
 import { combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { initialFriends, friendsReduser } from "./reducer/friends/friendsSlice";
-import {
-  initialTodosFilter,
-  todosFilterReducer,
-} from "./reducer/todos/todosFilterSlice";
-import { initialTodos, todosReduser } from "./reducer/todos/todosSlice";
-import { initialUsers, usersReduser } from "./reducer/users/usersSlice";
+import { friendsReduser } from "./reducer/friends/friendsSlice";
+import { todosReduser } from "./reducer/todos/todosSlice";
+import { usersReduser } from "./reducer/users/usersSlice";
 
-const store = createStore(
-  combineReducers({
-    friends: friendsReduser,
-    todos: todosReduser,
-    users: usersReduser,
-    todosFilter: todosFilterReducer,
-  }),
-  {
-    friends: initialFriends,
-    todos: initialTodos,
-    users: initialUsers,
-    todosFilter: initialTodosFilter,
-  },
-  composeWithDevTools()
-);
+const rootReducer = combineReducers({
+  friends: friendsReduser,
+  todos: todosReduser,
+  users: usersReduser,
+});
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;

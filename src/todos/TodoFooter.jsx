@@ -4,16 +4,16 @@ import { actionCompletedTodo } from "../store/action-creator/action-creator";
 import { getTodos } from "../store/reducer/todos/todosSlice";
 
 const TodoFooter = () => {
-  const todos = useSelector(getTodos);
+  const { list } = useSelector(getTodos);
   const dispatch = useDispatch();
   const isCompleted = useMemo(() => {
-    return todos.filter((todo) => todo.completed);
-  }, [todos]);
+    return list.filter((todo) => todo.completed);
+  }, [list]);
 
   return (
     <>
       <div className="col">
-        {isCompleted.length}/{todos.length} Comleted
+        {isCompleted.length}/{list.length} Comleted
       </div>
       <div className="col">
         <button

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   actionCheckedTodo,
@@ -10,6 +10,15 @@ const TodoListItem = ({ todo }) => {
   const onChangeChecked = (item) => {
     dispatch(actionCheckedTodo({ item: item }));
   };
+  const [value, setValue] = useState(todo.title);
+  const [disabled, setDisabled] = useState(true);
+
+  const onEdit = () => {
+    setDisabled((e) => !e);
+  };
+  const onChangeTodoItem = (e) => {
+    setValue(e.target.value);
+  };
   return (
     <>
       <li>
@@ -20,7 +29,13 @@ const TodoListItem = ({ todo }) => {
             onChangeChecked({ ...todo, completed: !todo.completed })
           }
         />
-        <span>{todo.title}</span>
+        {/* <span>{todo.title}</span> */}
+        <input
+          type="text"
+          value={value}
+          disabled={disabled}
+          onChange={(e) => onChangeTodoItem(e)}
+        />
         <button
           onClick={() => {
             dispatch(actionDeleteTodo({ id: todo.id }));
@@ -28,6 +43,7 @@ const TodoListItem = ({ todo }) => {
         >
           Delete
         </button>
+        <button onClick={() => onEdit()}>{disabled ? "Edit" : "Save"}</button>
       </li>
     </>
   );

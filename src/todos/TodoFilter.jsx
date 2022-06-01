@@ -1,25 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilterValue } from "../store/reducer/todos/todosFilterSlice";
+import { actionFiltredTodo } from "../store/action-creator/action-creator";
+import { getTodos } from "../store/reducer/todos/todosSlice";
 
 const TodoFilter = () => {
-  // const filterValue = useSelector(getFilterValue);
-  const todosFilter = useSelector(getFilterValue);
-  console.log(todosFilter);
+  const { filter } = useSelector(getTodos);
   const dispatch = useDispatch();
   return (
     <>
       <input
         type="text"
         placeholder="search"
-        value={todosFilter.filter}
+        value={filter}
         onChange={(e) => {
-          dispatch({
-            type: "filter",
-            payload: {
-              filterValue: e.target.value,
-            },
-          });
+          dispatch(actionFiltredTodo({ filterValue: e.target.value }));
         }}
       />
     </>
